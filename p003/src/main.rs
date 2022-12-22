@@ -20,7 +20,7 @@ pub fn factors(mut n: u64) -> Vec<u64> {
     if n > 2 {
         a.push(n);
     }
-    return a;
+    a
 }
 
 fn main() {
