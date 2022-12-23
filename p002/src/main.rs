@@ -21,18 +21,18 @@ impl Iterator for Fibonacci {
         let r = self.a;
         self.a = self.b;
         self.b += r;
-        // Return None when Fibonacci number exeeds four million
-        if r > 4_000_000 {
-            None
-        } else {
-            Some(r)
-        }
+        Some(r)
     }
 }
+
+const BOUND: u64 = 4_000_000;
 
 fn main() {
     println!(
         "{}",
-        Fibonacci::default().filter(|x| x % 2 == 0).sum::<u64>()
+        Fibonacci::default()
+            .take_while(|&x| x < BOUND)
+            .filter(|x| x % 2 == 0)
+            .sum::<u64>()
     );
 }
